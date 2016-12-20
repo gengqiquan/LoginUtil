@@ -11,10 +11,8 @@
 
 ###  doActionNeedLogin
 
-```
 检查是否登录
 登录直接执行操作，未登录跳转登录，登录后继续执行操作，放弃登录则什么都不做
-```
 
 ```java
   LoginUtil.doActionNeedLogin(this, () -> {
@@ -25,11 +23,9 @@
 
 ### doActionJustAfterLogin
 
-```
 检查是否登录
 已登录什么都不做
 未登录跳转登录，登录后继续执行操作，放弃登录则什么都不做
-```
 
 ```java
   LoginUtil.doActionJustAfterLogin(this, () -> {
@@ -40,10 +36,8 @@
 
 ### doActionAlreadyLogin
 
-```
 需要登录才能执行的操作
 登录直接执行操作，未登录跳转登录，登录后什么都不做
-```
 
 ```java
   LoginUtil.doActionAlreadyLogin(this, () -> {
@@ -53,9 +47,7 @@
 
 ### doLogin
 
-```
 跳转登录，什么都不做
-```
 
 ```java
   LoginUtil.doLogin(this);
@@ -63,9 +55,7 @@
 
 ### isLogin
 
-```
 判断是否登录，已登录返回true
-```
 
 ```java
   LoginUtil.isLogin();
