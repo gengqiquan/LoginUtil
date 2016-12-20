@@ -8,9 +8,10 @@ import android.content.Intent;
  * 登录回调类
  *
  * @author gengqiquan
- * time 2015年5月20日13:24:16
+ *         time 2015年5月20日13:24:16
  */
 public class LoginUtil {
+    private static Class<?> mLoginActivity = null;
     public static String USER_TOKEN = null;
     private static LoginCheckInterceptor mLoginCheckInterceptor = () -> {
         if (!checkNULL(LoginUtil.USER_TOKEN)) {
@@ -46,15 +47,9 @@ public class LoginUtil {
                 }
             };
             if (context != null) {
-                try {
-                    Class<?> LoginActivity = Class.forName("com.che300.price.activity.LoginActivity");
-                    Intent intent = new Intent(context, LoginActivity);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                } catch (ClassNotFoundException e) {
-
-                }
-
+                Intent intent = new Intent(context, mLoginActivity);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
 
         }
@@ -83,15 +78,9 @@ public class LoginUtil {
                 }
             };
             if (context != null) {
-                try {
-                    Class<?> LoginActivity = Class.forName("com.che300.price.activity.LoginActivity");
-                    Intent intent = new Intent(context, LoginActivity);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                    context.startActivity(intent);
-                } catch (ClassNotFoundException e) {
-
-                }
-
+                Intent intent = new Intent(context, mLoginActivity);
+                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                context.startActivity(intent);
             }
 
         }
@@ -109,14 +98,9 @@ public class LoginUtil {
             // 登录状态直接执行登录回调前需要做的操作
             callBack.callBack();
         } else {
-            try {
-                Class<?> LoginActivity = Class.forName("com.che300.price.activity.LoginActivity");
-                Intent intent = new Intent(context, LoginActivity);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            } catch (ClassNotFoundException e) {
-
-            }
+            Intent intent = new Intent(context, mLoginActivity);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         }
     }
 
@@ -126,16 +110,11 @@ public class LoginUtil {
      * author gengqiquan
      * date 2016/12/20 9:52
      */
-    public static void doLogin(Context context, final LoginForCallBack callBack) {
+    public static void doLogin(Context context) {
         if (!isLogin()) {
-            try {
-                Class<?> LoginActivity = Class.forName("com.che300.price.activity.LoginActivity");
-                Intent intent = new Intent(context, LoginActivity);
-                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                context.startActivity(intent);
-            } catch (ClassNotFoundException e) {
-
-            }
+            Intent intent = new Intent(context, mLoginActivity);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            context.startActivity(intent);
         }
     }
 
@@ -160,6 +139,16 @@ public class LoginUtil {
      */
     public static void addLoginCheckInterceptor(LoginCheckInterceptor loginCheckInterceptor) {
         mLoginCheckInterceptor = loginCheckInterceptor;
+    }
+
+    /**
+     * 添加自定义判断登录拦截器
+     * <p>
+     * author gengqiquan
+     * date 2016/12/20 15:49
+     */
+    public static void setLoginActivity(Class loginActivity) {
+        mLoginActivity = loginActivity;
     }
 
     // 判断是否NULL
