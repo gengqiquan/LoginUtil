@@ -1,4 +1,4 @@
-# 一句代码进行登录前置验证操作
+# 一句代码进行登录验证前置操作
 
 ```java
   LoginUtil.doActionNeedLogin(this, () -> {
