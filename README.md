@@ -74,6 +74,9 @@
 在应用入口调用
 
 ```java
+ LoginUtil.addLoginCheckInterceptor(new LoginUtil.LoginCheckInterceptor() {
+            @Override
+            public boolean isLogin() {
    if (!Util.checkNULL(LoginUtil.USER_POHONE)) {
             return true;
         }
@@ -81,6 +84,8 @@
         if (!Util.checkNULL(LoginUtil.USER_POHONE)) {
             return true;
         }
+             }
+                });
 ```
 
 ## 登录配置
