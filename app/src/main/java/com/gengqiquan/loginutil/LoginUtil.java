@@ -142,7 +142,7 @@ public class LoginUtil {
     }
 
     /**
-     * 添加自定义判断登录拦截器
+     * 设置登陆跳转界面
      * <p>
      * author gengqiquan
      * date 2016/12/20 15:49
